@@ -1,0 +1,8 @@
+#/bin/bash
+
+if [ -f ./selenium.pid ]; then
+    kill -9 `cat /var/run/selenium.pid`
+fi
+
+java -jar selenium-server-standalone-2.47.1.jar -role hub &
+echo $! > ./selenium.pid
