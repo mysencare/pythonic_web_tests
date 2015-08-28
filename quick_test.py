@@ -16,6 +16,13 @@ class Tests(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
 
+    def test_sidekiqs(self):
+        sq_domains = ['www.smhwdev.co.uk', 'showmyhomework.co.uk', 'smhwfront.co.uk'] 
+        for domain in sq_domains:
+            self.driver.get('http://%(domain)s/admin/sidekiq/' % { 'domain': domain })
+            answer = self.driver.page_source
+            self.assertTrue('Oh no' not in answer)
+
     def test_frontpage(self):
         for domain in domain_list:
             self.driver.get('http://%(domain)s' % { 'domain': domain })

@@ -17,4 +17,8 @@ web tests for showmyhomework.com and sister sites.
   
 
 ## usage
-   $sh start_selenium 
+   $sh start_selenium
+
+
+   run test separatly like this:
+      python -m unittest quick_test.Tests.test_sidekiqs
