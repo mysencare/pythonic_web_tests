@@ -4,7 +4,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import unittest
 import random
 import requests
-subdomain_file='/Users/tymienieckiarkadiusz/repo/salt-stack-beta/haproxy/templates/subdomain_list.txt'
+subdomain_file='./subdomain_list.txt'
 domain_list = ['showmyhomework.com', 'showmyhomework.co.uk', 'smhwfrontend.co.uk',
                'smhwdev.co.uk', 'smhwbeta.co.uk']
 
