@@ -4,6 +4,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import unittest
 import random
 import requests
+import time
 subdomain_file='./subdomain_list.txt'
 domain_list = ['showmyhomework.com', 'showmyhomework.co.uk', 'smhwfrontend.co.uk',
                'smhwdev.co.uk', 'smhwbeta.co.uk']
@@ -43,7 +44,7 @@ class Tests(unittest.TestCase):
 
 
     def test_all_sites(self):
-        subdomains = [line for line in open(subdomain_file, 'r')]
+        subdomains = [line.strip() for line in open(subdomain_file, 'r')]
         random.shuffle(subdomains)
         subdomains = subdomains[:20]
         for domain in domain_list:
@@ -52,6 +53,7 @@ class Tests(unittest.TestCase):
             for subd in subdomains:
                 print(subd)
                 self.test_subdomains(domain=domain, subdomain=subd)
+                sleep 5
 
 
     def test_subdomains(self, domain='smhwdev.co.uk', subdomain='www'):
