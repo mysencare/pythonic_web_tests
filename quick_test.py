@@ -53,7 +53,7 @@ class Tests(unittest.TestCase):
             for subd in subdomains:
                 print(subd)
                 self.test_subdomains(domain=domain, subdomain=subd)
-                sleep 5
+                time.sleep(5)
 
 
     def test_subdomains(self, domain='smhwdev.co.uk', subdomain='www'):
