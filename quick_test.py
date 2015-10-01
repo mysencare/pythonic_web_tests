@@ -5,6 +5,7 @@ import unittest
 import random
 import requests
 import time
+import os
 subdomain_file='./subdomain_list.txt'
 domain_list = ['showmyhomework.com', 'showmyhomework.co.uk', 'smhwfrontend.co.uk',
                'smhwdev.co.uk', 'smhwbeta.co.uk']
@@ -81,6 +82,17 @@ class Tests(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
+    @property
+    def failureException(self):
+        class MyFailureException(AssertionError):
+            def __init__(self_, *args, **kwargs):
+                screenshot_dir = 'reports/screenshots'
+                if not os.path.exists(screenshot_dir):
+                    os.makedirs(screenshot_dir)
+                self.driver.save_screenshot('{0}/{1}.png'.format(screenshot_dir, self.id()))
+                return super(MyFailureException, self_).__init__(*args, **kwargs)
+        MyFailureException.__name__ = AssertionError.__name__
+        return MyFailureException
 
 if __name__ == "__main__":
     unittest.main()
